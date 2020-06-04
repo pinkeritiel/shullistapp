@@ -1,0 +1,81 @@
+<!-- main app container -->
+<div class="card m-3">
+	<h5 class="card-header">Shul Registration Form</h5>
+	<div class="card-body">
+		<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+			<div class="form-row">
+				<div class="form-group col-md-6">
+					<label>Denomination</label>
+					<select formControlName="denomination" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.denomination.errors }">
+						<option value=""></option>
+						<option value="Orthodox">Orthodox</option>
+						<option value="Conservative">Conservative</option>
+						<option value="Reform">Reform</option>
+						<option value="Hasidik">Hasidik</option>
+					</select>
+					<div *ngIf="submitted && f.denomination.errors" class="invalid-feedback">
+						<div *ngIf="f.denomination.errors.required">Denomination is required</div>
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label>Prayer Style (Nusach)</label>
+					<select formControlName="prayerStyle" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.prayerStyle.errors }">
+						<option value=""></option>
+						<option value="Ashkenazi">Ashkenazi</option>
+						<option value="Sefard">Sefard</option>
+						<option value="Mizrach">Edot Mizrach</option>
+						<option value="Yemenite">Yemenite</option>
+					</select>
+					<div *ngIf="submitted && f.prayerStyle.errors" class="invalid-feedback">
+						<div *ngIf="f.prayerStyle.errors.required">Prayer Style is required</div>
+					</div>
+				</div>
+			</div>
+			<div class="form-row">
+
+				<div class="form-group col">
+					<label>Shul Name</label>
+					<input type="text" formControlName="shulName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.shulName.errors }" />
+					<div *ngIf="submitted && f.shulName.errors" class="invalid-feedback">
+						<div *ngIf="f.shulName.errors.required">Shul Name is required</div>
+					</div>
+				</div>
+			</div>
+			<div class="form-row">
+
+				<div class="form-group col">
+					<label>Address</label>
+					<input type="text" formControlName="address" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.address.errors }" />
+					<div *ngIf="submitted && f.address.errors" class="invalid-feedback">
+						<div *ngIf="f.address.errors.required">Address is required</div>
+					</div>
+				</div>
+			</div>
+			<div class="form-row">
+
+				<div class="form-group col">
+					<label>Web Site</label>
+					<input type="text" formControlName="webSite" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.webSite.errors }" />
+					<div *ngIf="submitted && f.webSite.errors" class="invalid-feedback">
+						<div *ngIf="f.webSite.errors.required">Web Site is required</div>
+					</div>
+				</div>
+			</div>
+			<div class="form-row">
+
+				<div class="form-group form-check">
+					<input type="checkbox" formControlName="acceptTerms" id="acceptTerms" class="form-check-input" [ngClass]="{ 'is-invalid': submitted && f.acceptTerms.errors }" />
+					<label for="acceptTerms" class="form-check-label">Accept Terms & Conditions</label>
+					<div *ngIf="submitted && f.acceptTerms.errors" class="invalid-feedback">Accept Ts & Cs is required</div>
+				</div>
+			</div>
+						<div class="form-row">
+				<div class="text-center">
+					<button class="btn btn-primary mr-1">Register</button>
+					<button class="btn btn-secondary" type="reset" (click)="onReset()">Cancel</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+
